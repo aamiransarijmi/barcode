@@ -1,0 +1,219 @@
+.container {
+  max-width: 1024px;
+  margin: auto;
+}
+
+@mixin box-container {
+  background: var(--white-100);
+  box-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
+  padding: 32px 48px;
+  border-radius: 12px;
+  @media screen and (max-width: 960px) {
+    padding: 24px;
+  }
+  @media screen and (max-width: 440px) {
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.05);
+    border-radius: 0;
+  }
+}
+@mixin aligns-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media screen and (max-width: 960px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+@mixin width-40 {
+  width: 45%;
+  @media screen and (max-width: 960px) {
+    width: 100%;
+  }
+}
+.pay-method-stripe {
+  margin-top: 80px;
+  @include aligns-item;
+  @include box-container;
+  h3 {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+  .methods-image {
+    display: flex;
+    img {
+      &:not(:first-child) {
+        margin-left: 24px;
+      }
+    }
+  }
+}
+
+.payment-details {
+  margin-top: 12px;
+  @include box-container;
+  .qr-stripe {
+    @include aligns-item;
+    margin-bottom: 40px;
+    .prize {
+      @include width-40;
+      h1 {
+        font-size: 28px;
+        line-height: 36px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .caption {
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 400;
+        color: var(--light-1);
+      }
+      .date {
+        font-size: 16px;
+        line-height: 20px;
+        font-weight: 600;
+      }
+    }
+    .qr-image {
+      @include width-40;
+      text-align: center;
+      img {
+        width: 112px;
+      }
+    }
+  }
+  .user-details {
+    display: flex;
+    justify-content: space-between;
+    .user-info {
+      @include width-40;
+      li {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+        display: flex;
+        .key {
+          width: 50%;
+          font-weight: 600;
+          line-height: 20px;
+          margin-right: 20px;
+        }
+        & + li {
+          margin-top: 12px;
+        }
+      }
+    }
+    .aside-info {
+      @include width-40;
+      .tips-payment {
+        border: 1px solid #c3deff;
+        padding: 16px;
+        border-radius: 12px;
+        background: #f2f8ff;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 400;
+      }
+      .button-wrapper {
+        margin-top: 50px;
+        .btn {
+          font-size: 16px;
+          line-height: 24px;
+          background: linear-gradient(to right, #f4f4f4, #eaeaea);
+          border: none;
+          padding: 16px 12px;
+          width: 100%;
+          cursor: pointer;
+          border-radius: 12px;
+          &.save {
+            background: linear-gradient(to right, #dbff00, #adff00);
+            margin-bottom: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+footer {
+  p {
+    margin: 24px 0;
+    text-align: center;
+    color: #bfbfbf;
+    img {
+      margin-right: 20px;
+    }
+  }
+}
+
+// media query
+
+@media screen and (max-width: 1440px) and (min-width: 961px) {
+  .container {
+    max-width: 96%;
+  }
+}
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 400px;
+  }
+  .pay-method-stripe {
+    flex-direction: row;
+    .methods-image {
+      img {
+        &:not(:first-child) {
+          margin-left: 16px;
+        }
+      }
+    }
+  }
+  .payment-details {
+    .qr-stripe {
+      .prize {
+        h1 {
+          margin: 12px 0;
+        }
+        .caption {
+          margin-bottom: 4px;
+        }
+        .date {
+          margin-bottom: 50px;
+        }
+      }
+    }
+    .user-details {
+      flex-direction: column;
+      .user-info {
+        li {
+          justify-content: space-between;
+          .value {
+            width: 45%;
+            word-break: break-word;
+            text-align: right;
+          }
+        }
+      }
+      .aside-info {
+        .tips-payment {
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .container {
+    max-width: 100%;
+  }
+  .pay-method-stripe {
+    margin-top: 0;
+    padding: 32px 24px;
+  }
+  .payment-details {
+    margin-top: 0;
+    border-top: 1px solid #ebebeb;
+    box-shadow: none !important;
+  }
+}
